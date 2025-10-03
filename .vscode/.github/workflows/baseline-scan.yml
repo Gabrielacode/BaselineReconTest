@@ -1,0 +1,32 @@
+ 
+    name: 'Baseline Recon Scan'
+
+    on:
+      pull_request:
+        branches: [ main ]
+
+    jobs:
+      scan:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v3
+
+          - name: Setup Node.js
+            uses: actions/setup-node@v3
+            with:
+              node-version: '18'
+
+          - name: Install Dependencies & Compile
+            # This assumes your CLI is part of the vscode-extension package
+            run: |
+              cd vscode-extension
+              npm install
+              npm run compile
+
+          - name: Run Baseline Recon Scan
+            run: |
+              # Run the compiled CLI script
+              # The --min-score=85 flag will fail the job if the score is below 85%
+              node ./vscode-extension/server/out/cli.js --min-score=85
+    

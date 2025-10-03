@@ -1,0 +1,38 @@
+/* Shared styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.title {
+  text-align: center;
+  color: #333;
+}
+
+/* Outdated styles */
+marquee {
+  background: yellow;
+  padding: 10px;
+}
+
+/* Modern layout with Flexbox */
+.modern-layout {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.modern-box {
+  padding: 20px;
+  background: linear-gradient(135deg, #6dd5ed, #2193b0);
+  color: white;
+  border-radius: 8px;
+  flex: 1;
+  text-align: center;
+  animation: slide 5s infinite alternate;
+}
+
+@keyframes slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(20px); }
+}
